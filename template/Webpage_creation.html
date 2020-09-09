@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Webpage</title>
+</head>
+<body>
+    <h2>Fill The Form To Add Webpage To The Table</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% if topics %}
+        <label for="topic">Topic</label>
+        <select name="topic" id="topic">
+        {% for topic in topics %}
+          <option value="{{topic}}">{{topic.topic_name}}</option>
+        {% endfor %}
+        </select>
+        {% endif %}
+        <p>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        </p>
+        <p>
+        <label for="url">URL</label>
+        <input type="url" name="url" id="url">
+        </p>
+        <input type="submit" value="Add Webpage">
+        
+    </form>
+</body>
+</html>
